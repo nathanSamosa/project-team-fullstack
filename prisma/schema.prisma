@@ -10,3 +10,11 @@ datasource db {
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
+
+model Pokemon {
+    id          Int       @id @default(autoincrement())
+    name        String
+    art         String
+    type1       String
+    type2       String?
+}
