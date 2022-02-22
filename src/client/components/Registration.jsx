@@ -12,13 +12,13 @@ const Registration = () => {
                     </ul>
                 </div>
                 <form id="registrationForm">
-                    <label htmlFor="emailR" className="emailLabelR">Email</label>
-                    <input type="text" name="emailR" id="emailR" className="regInput"></input>
-                    <label htmlFor="usernameR" className="usernameLabelR">Username</label>
-                    <input type="text" name="usernameR" id="usernameR" className="regInput"></input>
-                    <label htmlFor="passwordR" className="passwordLabelR">Password</label>
-                    <input type="text" name="passwordR" id="passwordR" className="regInput"></input>
-                    <input type="submit" className="submitR" id="submitR" value="Create Account"></input>
+                    <label htmlFor="email" className="emailLabel">Email</label>
+                    <input type="text" name="email" id="email" className="regInput"></input>
+                    <label htmlFor="username" className="usernameLabel">Username</label>
+                    <input type="text" name="username" id="username" className="regInput"></input>
+                    <label htmlFor="password" className="passwordLabel">Password</label>
+                    <input type="text" name="password" id="password" className="regInput"></input>
+                    <input type="submit" className="submit" id="submit" value="Create Account"></input>
                 </form>
             </div>
         </main>
