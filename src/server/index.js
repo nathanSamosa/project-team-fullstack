@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Add your routes here
-
-
+const pokemonRouter = require("./routers/pokemon")
+app.use("/pokemon", pokemonRouter)
 
 
 
