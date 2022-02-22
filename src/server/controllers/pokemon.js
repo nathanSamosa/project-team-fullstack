@@ -3,15 +3,34 @@ const prisma = new PrismaClient();
 const axios = require('axios');
 
 const pokemonNumber = 151;
-const pokeArr = []
+const pokeArr = [];
 
-const createSinglePoke = async(pokemon) => {
+const createSinglePoke = (pokemon, arrIndex) => {
     pokeArr.push({
-        name: pokemon.species.name
+        name: pokemon.species.name,
+        art: pokemon.sprites.other.dream_world.front_default,
+        type1: pokemon.types[0].type.name
     })
+
+    if(pokemon.types[1]) {
+        pokeArr[arrIndex] = {...pokeArr[arrIndex], type2: pokemon.types[1].type.name}
+    }
 }
 
-const createPokemons = async(res) => {
+const getPokeApi = async() => {
+    for(let i = 1; i < pokemonNumber + 1; i++) {
+        try {
+            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
+            createSinglePoke(result.data, i-1);
+        } catch (e) {
+            console.log("error", e);
+        }
+    }
+}
+
+const createPokemons = async(req, res) => {
+    await getPokeApi();
+
     const pokemons = await prisma.pokemon.createMany({
         data: pokeArr
     })
@@ -20,19 +39,8 @@ const createPokemons = async(res) => {
     res.json({ data: pokemons})
 }
 
-const getPokeApi = async (req, res) => {
-    for(let i = 1; i < pokemonNumber + 1; i++) {
-        try {
-            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`);
-            createSinglePoke(result.data);
-        } catch (e) {
-            console.log("error", e);
-        }
-    }
 
-    createPokemons(res);
-}
 
 module.exports = {
-    getPokeApi
+    createPokemons
 }

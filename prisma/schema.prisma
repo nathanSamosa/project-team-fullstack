@@ -14,4 +14,7 @@ datasource db {
 model Pokemon {
     id          Int       @id @default(autoincrement())
     name        String
+    art         String
+    type1       String
+    type2       String?
 }
