@@ -46,7 +46,7 @@ model Profile {
   userTeamMember UserTeamMember[]
   rating         Rating[]
   post           Post[]
-  Comment        Comment[]
+  comment        Comment[]
 }
 
 model UserTeamMember {
@@ -88,7 +88,7 @@ model Post {
   content    String
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
-  Comment    Comment[]
+  comment    Comment[]
 }
 
 model Comment {
