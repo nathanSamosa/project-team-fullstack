@@ -27,7 +27,7 @@ model Pokemon {
 
 model User {
   id        Int      @id @default(autoincrement())
-  username  String
+  username  String   @unique
   password  String
   email     String
   admin     Boolean  @default(false)
