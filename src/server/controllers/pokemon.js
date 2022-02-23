@@ -6,14 +6,15 @@ const pokemonNumber = 151;
 const pokeArr = [];
 
 const createSinglePoke = (pokemon, arrIndex) => {
+    console.log(pokemon.species.name)
     pokeArr.push({
         name: pokemon.species.name,
         art: pokemon.sprites.other.dream_world.front_default,
-        type1: pokemon.types[0].type.name
+        typePrimary: pokemon.types[0].type.name
     })
 
     if(pokemon.types[1]) {
-        pokeArr[arrIndex] = {...pokeArr[arrIndex], type2: pokemon.types[1].type.name}
+        pokeArr[arrIndex] = {...pokeArr[arrIndex], typeSecondary: pokemon.types[1].type.name}
     }
 }
 
@@ -29,6 +30,7 @@ const getPokeApi = async() => {
 }
 
 const createPokemons = async(req, res) => {
+    console.log("fetching pokemon...")
     await getPokeApi();
 
     const pokemons = await prisma.pokemon.createMany({

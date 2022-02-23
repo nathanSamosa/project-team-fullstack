@@ -15,14 +15,12 @@ model Pokemon {
   id             Int              @id @default(autoincrement())
   name           String
   art            String
-  type1          String
-  type2          String?
-  ratingAvg      Int              @default(1)
-  ratingCount    Int              @default(0)
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
+  typePrimary    String
+  typeSecondary  String?
   userTeamMember UserTeamMember[]
   rating         Rating[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
 }
 
 model User {
