@@ -12,9 +12,93 @@ datasource db {
 }
 
 model Pokemon {
-    id          Int       @id @default(autoincrement())
-    name        String
-    art         String
-    type1       String
-    type2       String?
+  id             Int              @id @default(autoincrement())
+  name           String
+  art            String
+  type1          String
+  type2          String?
+  ratingAvg      Int              @default(1)
+  ratingCount    Int              @default(0)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  userTeamMember UserTeamMember[]
+  rating         Rating[]
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  email     String   @unique
+  admin     Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile   Profile?
+
+}
+
+model Profile {
+  id             Int              @id @default(autoincrement())
+  user           User             @relation(fields: [userId], references: [id])
+  userId         Int              @unique
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  userTeamMember UserTeamMember[]
+  rating         Rating[]
+  post           Post[]
+  comment        Comment[]
+}
+
+model UserTeamMember {
+  id        Int      @id @default(autoincrement())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId Int
+  pokemon   Pokemon  @relation(fields: [pokemonId], references: [id])
+  pokemonId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId Int      @unique
+  pokemon   Pokemon  @relation(fields: [pokemonId], references: [id])
+  pokemonId Int
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  title     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  post      Post[]
+}
+
+model Post {
+  id         Int       @id @default(autoincrement())
+  profile    Profile   @relation(fields: [profileId], references: [id])
+  profileId  Int       @unique
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int       @unique
+  title      String
+  content    String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  comment    Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int      @unique
+  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId Int      @unique
+  parentId  Int?
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
