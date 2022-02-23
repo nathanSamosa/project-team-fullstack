@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 const pokemonRouter = require("./routers/pokemon")
 app.use("/pokemon", pokemonRouter)
 
+const userRouter = require("./routers/user")
+app.use("/user", userRouter)
+
 
 
 
