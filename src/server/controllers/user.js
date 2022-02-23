@@ -20,12 +20,37 @@ const postRegisterDetails = async (req, res) => {
         res.json({newUser: newUser});
         
     } catch(error) {
-        res.status(500).send("Something Broke");
+        res.status(500).send("There was an error!");
     }
 
 
 }
 
+const postLoginDetails = async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const findUser = await prisma.user.findUnique({
+            where: {
+                username
+            }
+        });
+        if (findUser) {
+            if (await bcrypt.compare(password, findUser.password)) {
+                const token = jwt.sign(username, secret);
+                return res.json({ userToken: token })
+            } else {
+                return res.json("Username or Password is incorrect.")
+            }
+        } else {
+            return res.json("Username or Password is incorrect.");
+        }
+    } catch (error) {
+        res.status(500).send("There was an error with your details.");
+        console.log(error);
+    }
+}
+
 module.exports = {
-    postRegisterDetails
+    postRegisterDetails,
+    postLoginDetails
 }

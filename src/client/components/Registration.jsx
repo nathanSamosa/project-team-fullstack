@@ -7,7 +7,7 @@ const emptyUser = {
     password: ""
 }
 
-const registerURL = "http://localhost:4000";
+const registerURL = "http://localhost:4000/user/register"; // need to update this URL for when we test the fetch.
 
 const Registration = () => {
     const [userDetails, setUserDetails] = useState(emptyUser);
@@ -40,7 +40,7 @@ const Registration = () => {
         
     }
 
-    return( 
+    return ( 
         <main className="registrationPage">
             <div id="registrationFormDiv">
                 <div id="registrationSell">
