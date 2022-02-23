@@ -41,12 +41,16 @@ ul {
   list-style: none;
 }
 
-.registrationPage h1 {
-  margin-bottom: 10vh;
+.loginPage h1 {
+  margin-bottom: 7vh;
   text-align: left;
   margin-left: 15vw;
   margin-top: 5vw;
+  padding-bottom: 8px;
   font-weight: normal;
+  border-bottom-style: solid;
+  border-bottom-color: #8ec5d1;
+  width: 37vw;
 }
 
 #registrationFormDiv li,
@@ -106,9 +110,26 @@ h2 {
   "passwordLabel" 20px
   "password" 30px
   "submit";
+  margin-left: auto;
+}
+
+#loginForm {
+  grid-template: 
+  "usernameLabel usernameLabel" 20px
+  "username username" 30px
+  "passwordLabel passwordLabel" 20px
+  "password password" 30px
+  "submit submit" 60px
+  "registerLabel registerLink" 30px;
+  margin-left: 15vw;
+  align-items: center;
+}
+
+#registrationForm,
+#loginForm {
+  display: grid;
   gap: 10px;
   width: 35vw;
-  margin-left: auto;
   margin-right: auto;
   padding: 10px;
   background-color: rgb(255, 255, 255);
@@ -122,36 +143,37 @@ h2 {
   grid-area: email;
 }
 
-#registrationForm .usernameLabel {
+.usernameLabel {
   grid-area: usernameLabel;
 }
-#registrationForm #username {
+#username {
   grid-area: username;
 }
 
-#registrationForm .passwordLabel {
+.passwordLabel {
   grid-area: passwordLabel;
 }
-#registrationForm #password {
+#password {
   grid-area: password;
   font-weight: 100;
 }
 
 #registrationForm #email,
-#registrationForm #username,
-#registrationForm #password {
+#username,
+#password {
   background: rgb(150,203,174);
   background: linear-gradient(153deg, rgba(150,203,174,0.500437675070028) 0%, rgba(142,197,209,0.500437675070028) 50%, rgba(233,171,125,0.5032387955182073) 100%);
   border: none;
+  height: 25px;
 }
 
-#registrationForm .submit {
-  grid-area: submitR;
+.submit {
+  grid-area: submit;
   margin-top: 20px;
+  margin-bottom: 10px;
+  height: 25px;
   background: #ffffff;
   border: none;
-  margin-bottom: 10px;
-  height: 30px;
   box-shadow: -2px -2px 5px #8ec5d18f, 
               2px 2px 5px #e9ab7d8f
 }
@@ -165,6 +187,10 @@ input[type=text] {
   font-weight: 100;
 }
 
-input[type=text]::selection {
-  border: none;
+#registerLink {
+  grid-area: registerLink;
+}
+
+#registeLabel {
+  grid-area: registerLabel;
 }
