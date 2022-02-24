@@ -21,8 +21,11 @@ app.use("/pokemon", pokemonRouter)
 const userRouter = require("./routers/user")
 app.use("/user", userRouter)
 
+const ratingRouter = require("./routers/rating")
+app.use("/rating", ratingRouter)
 
-
+const profileRouter = require("./routers/profile")
+app.use("/profile", profileRouter)
 
 // Set up a default "catch all" route to use when someone visits a route
 // that we haven't built

@@ -1,0 +1,97 @@
+/* FORM PAGE FORMATTING */
+
+.loginPage,
+.registrationPage {
+    padding: 2.5rem 0;
+    font-weight: lighter;
+}
+
+.userForm {
+    display: flexbox;
+    flex-direction: column;
+    max-width: 500px;
+    height: fit-content;
+    padding: 0.5rem 1rem;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgb(var(--clr-shadow));
+}
+
+.userFormDiv h1 {
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: normal;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(var(--clr-pokeblue));
+}
+
+.userFormDiv h2 {
+    font-weight: normal;
+    margin-left: 1rem;
+}
+
+.userFormDiv ul {
+    list-style: none;
+}
+
+.userFormDiv li {
+    margin: 0.75rem 2rem;
+}
+
+/* FORM */
+
+.userForm > * {
+    width: 100%;
+    height: 1.75rem;
+}
+
+.userForm > input {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: black;
+    background: linear-gradient(153deg, 
+        rgba(var(--clr-pokegreen), 0.5) 0%, 
+        rgba(var(--clr-pokeblue), 0.5) 50%, 
+        rgba(var(--clr-pokeorange), 0.5) 100%);
+    border: none;
+    padding-left: 1rem;
+}
+
+.userForm button {
+    margin: 1rem 0;
+    margin-bottom: 20px;
+    background: #ffffff;
+    border: none;
+    box-shadow: -2px -2px 5px rgba(var(--clr-pokeblue), 0.5), 
+                2px 2px 5px rgba(var(--clr-pokeorange), 0.5)
+}
+
+.userFormDiv {
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+#loginFormDiv {
+    max-width: 500px;
+}
+
+#registrationFormDiv {
+    max-width: 1500px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#registrationSell {
+    border-left-color: rgb(var(--clr-pokegreen));
+    border-left-style: solid ;
+    margin-left: 10vw;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 500px) {
+    #registrationFormDiv {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+}
