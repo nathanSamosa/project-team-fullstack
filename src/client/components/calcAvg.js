@@ -1,4 +1,5 @@
 import { useState } from "react";
+const url = process.env.REACT_APP_API_URL
 
 const [strengthAvg, setStrengthAvg] = useState(0)
 const [companionAvg, setCompanionAvg] = useState(0)
@@ -6,9 +7,9 @@ const [designAvg, setDesignAvg] = useState(0)
 const [ratingsArray, setRatingsArray] = useState([])
 
 const fetchRatings = () => {
-    const ratingUrl = "http://localhost:4000/ratings"
+    const ratingUrl = url + "/rating"
 
-    fetch(url)
+    fetch(ratingUrl)
     .then(res => res.json)
     .then(data => setRatingsArray(data))
 }
