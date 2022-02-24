@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styling/form.css"
 
 const URL = process.env.REACT_APP_API_URL;
 const loginEndpoint = "/user/login"; 
@@ -43,9 +44,9 @@ const Login = () => {
 
     return( 
         <main className="loginPage">
-            <div id="loginFormDiv">
+            <div id="loginFormDiv" className="userFormDiv">
                 <h1>Login</h1>
-                <form id="loginForm" onSubmit={handleSubmit}>
+                <form id="loginForm" className="userForm" onSubmit={handleSubmit}>
                     <label htmlFor="username" className="usernameLabel">
                         Username
                     </label>
@@ -69,16 +70,16 @@ const Login = () => {
                         value={loginDetails.password}
                         onChange={handleChange}
                     />
-                    <input 
+                    <button 
                         type="submit" 
                         className="submit" 
                         id="submit" 
-                        value="Login"
-                    />
+                    >Login</button>
                     <label className="registerLabel">
                         Don't have an account?
+                        <a className="registerLink" id="registerLink"> Register Here</a>
                     </label>
-                    <a className="registerLink" id="registerLink">Register Here</a>
+                    
                 </form>
             </div>
         </main>

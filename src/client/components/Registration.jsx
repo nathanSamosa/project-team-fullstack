@@ -44,7 +44,7 @@ const Registration = () => {
 
     return ( 
         <main className="registrationPage">
-            <div id="registrationFormDiv">
+            <div id="registrationFormDiv" className="userFormDiv">
                 <div id="registrationSell">
                     <h2>Create your account</h2>
                     <ul>
@@ -53,7 +53,7 @@ const Registration = () => {
                         <li>Pick your dream team</li>
                     </ul>
                 </div>
-                <form id="registrationForm" onSubmit={handleSubmit}>
+                <form id="registrationForm" className="userForm" onSubmit={handleSubmit}>
                     <label htmlFor="email" className="emailLabel">
                         Email
                     </label>
@@ -90,7 +90,7 @@ const Registration = () => {
                         onChange={handleChange}
                         required
                     />
-                    <input type="submit" className="submit" id="submit" value="Create Account"/>
+                    <button type="submit" className="submit" id="submit">Create Account</button>
                 </form>
             </div>
         </main>
