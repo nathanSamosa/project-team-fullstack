@@ -30,6 +30,7 @@ const getPokeApi = async() => {
 }
 
 const createPokemons = async(req, res) => {
+    const {} = req.body
     console.log("fetching pokemon...")
     await getPokeApi();
 
