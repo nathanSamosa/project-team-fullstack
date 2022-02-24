@@ -1,13 +1,15 @@
 import { useState } from "react";
 
+const URL = process.env.REACT_APP_API_URL;
+const registerEndpoint = "/user/register";
+const registerURL = URL + registerEndpoint;
+
 
 const emptyUser = {
     email: "",
     username: "",
     password: ""
 }
-
-const registerURL = "http://localhost:4000/user/register"; // need to update this URL for when we test the fetch.
 
 const Registration = () => {
     const [userDetails, setUserDetails] = useState(emptyUser);
