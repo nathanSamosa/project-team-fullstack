@@ -194,3 +194,17 @@ input[type=text] {
 #registeLabel {
   grid-area: registerLabel;
 }
+
+/* Start of styling for HOME PAGE   */
+
+.homeHeader {
+  height: 70px;
+  background-color: red;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
