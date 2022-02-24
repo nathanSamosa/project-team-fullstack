@@ -31,7 +31,7 @@ const Login = () => {
     const handleChange = e => {
         const { value, name } = e.target;
         setLoginDetails({
-            ...userDetails, [name]: value
+            ...loginDetails, [name]: value
         });
     }
 

@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const express = require('express');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
@@ -10,6 +10,7 @@ const postRegisterDetails = async (req, res) => {
     try {
         const { email, username, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
+        
         const newUser = await prisma.user.create({
             data: {
                 email: email,
@@ -17,7 +18,9 @@ const postRegisterDetails = async (req, res) => {
                 password: hashedPassword
             }
         });
-        res.json({newUser: newUser});
+
+        console.log(newUser)
+        res.json({ data: newUser });
         
     } catch(error) {
         res.status(500).send("There was an error!");
@@ -34,16 +37,17 @@ const postLoginDetails = async (req, res) => {
                 username
             }
         });
-        if (findUser) {
-            if (await bcrypt.compare(password, findUser.password)) {
-                const token = jwt.sign(username, secret);
-                return res.json({ userToken: token })
-            } else {
-                return res.json("Username or Password is incorrect.")
-            }
-        } else {
-            return res.json("Username or Password is incorrect.");
+
+        const matchingPassword = await bcrypt.compare(password, findUser.password);
+
+        if (findUser && matchingPassword) {
+            const token = jwt.sign(username, secret);
+            console.log(token)
+            return res.json({ data: token })
         }
+
+        return res.json("Username or Password is incorrect.");
+        
     } catch (error) {
         res.status(500).send("There was an error with your details.");
         console.log(error);
