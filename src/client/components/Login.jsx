@@ -1,11 +1,15 @@
 import { useState } from "react";
 
+const URL = process.env.REACT_APP_API_URL;
+const loginEndpoint = "/user/login"; 
+const loginURL = URL + loginEndpoint;
+
+console.log(loginURL);
+
 const emptyDetails = {
     username: "",
     password: ""
 }
-
-const loginURL = "http://localhost:4000/user/login"; //need to update this URL when we try to run the fetch.
 
 const Login = () => {
     const [loginDetails, setLoginDetails] = useState(emptyDetails);
