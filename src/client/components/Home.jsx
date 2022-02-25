@@ -1,21 +1,15 @@
 import { useState } from "react";
+import "../styling/homePage.css";
+import HomeMain from "./homeComponents/HomeMain";
+import Header from "./homeComponents/Header";
 
 const Home = () => {
-    return (
-        <div className="homePage">
-            <header className="homeHeader">
-
-            </header>
-            <section className="mainContainer">
-                <div className="postContainer">
-
-                </div>
-                <div className="ratingContainer">
-
-                </div>
-            </section>
-        </div>
-    )
-}
+  return (
+    <div className="homePage">
+      <Header />
+      <HomeMain />
+    </div>
+  );
+};
 
 export default Home;
