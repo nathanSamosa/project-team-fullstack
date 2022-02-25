@@ -70,20 +70,11 @@ model Rating {
   updatedAt DateTime @updatedAt
 }
 
-model Category {
-  id        Int      @id @default(autoincrement())
-  title     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  post      Post[]
-}
-
 model Post {
   id         Int       @id @default(autoincrement())
   profile    Profile   @relation(fields: [profileId], references: [id])
-  profileId  Int       @unique
-  category   Category  @relation(fields: [categoryId], references: [id])
-  categoryId Int       @unique
+  profileId  Int       
+  category   String
   title      String
   content    String
   createdAt  DateTime  @default(now())
@@ -94,9 +85,9 @@ model Post {
 model Comment {
   id        Int      @id @default(autoincrement())
   post      Post     @relation(fields: [postId], references: [id])
-  postId    Int      @unique
+  postId    Int      
   profile   Profile  @relation(fields: [profileId], references: [id])
-  profileId Int      @unique
+  profileId Int      
   parentId  Int?
   content   String
   createdAt DateTime @default(now())
