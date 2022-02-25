@@ -17,7 +17,7 @@ const postRegisterDetails = async (req, res) => {
                 username: username,
                 password: hashedPassword,
                 profile: {
-                    crate: {}
+                    create: {}
                 }
             }
         });
