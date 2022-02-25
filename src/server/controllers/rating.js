@@ -1,9 +1,16 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+const password = process.env.JWT_SECRET
+
 const getRatings = async (req, res) => {
-    const ratings = await prisma.rating.findMany({})
-    res.json({ data: ratings })
+    const {
+        getPassword
+    } = req.body
+    if (getPassword === password) {
+        const ratings = await prisma.rating.findMany({})
+        res.json({ data: ratings })
+    }
 }
 
 const postRating = async (req, res) => {
