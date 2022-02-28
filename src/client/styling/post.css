@@ -1,0 +1,69 @@
+.postPage {
+    margin: 50px 50px 50px;
+}
+
+.post {
+    box-shadow: -2px -2px 5px rgba(var(--clr-pokeblue), 0.5), 
+                2px 2px 5px rgba(var(--clr-pokeorange), 0.5);
+    padding: 20px 20px 20px
+}
+
+.comments {
+    margin-top: 20px;
+    padding: 20px 0px 20px
+}
+
+.comment{
+    margin-bottom: 10px;
+    padding: 10px 20px 10px;
+    box-shadow: 0px 0px 10px rgb(var(--clr-shadow));
+}
+
+.postUsername{
+    margin-bottom: 10px;
+}
+
+.postDateTime,
+.commentDateTime {
+    font-size:x-small;
+    margin-bottom: 5px;
+}
+
+.postInteract {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 5px;
+    margin-top: 20px;
+    font-size: x-small;
+}
+
+.commentInteract {
+    margin-top: 10px;
+}
+
+.postContent {
+    font-size: small;
+}
+
+.commentInteract {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 3px;
+}
+
+.commentDateTime,
+.commentInteract {
+    font-size: xx-small;
+}
+
+.commentDateTime {
+    margin-bottom: 7px;
+}
+
+.commentContent {
+    font-size: x-small;
+}
+
+.commentUsername {
+    margin-bottom: 5px;
+}
