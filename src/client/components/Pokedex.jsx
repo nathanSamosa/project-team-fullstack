@@ -10,7 +10,7 @@ const pokemonURL = URL + pokemonEndpoint;
 
 
 const Pokedex = () => {
-    const [pokeArr, setPokeArr] = useState([])
+    const [pokeArr, setPokeArr] = useState([]);
     
     const getPokemons = async() => {
         console.log(pokemonURL)

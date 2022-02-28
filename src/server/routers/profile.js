@@ -3,7 +3,7 @@ const {
     postProfile
 } = require("../controllers/profile");
 
-const router = express.Router()
+const router = express.Router();
 
 router.post("/", postProfile)
 
