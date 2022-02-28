@@ -1,10 +1,13 @@
 const express = require("express");
 const {
     getRatings,
-    postRating
+    postRating,
+    seedRating
 } = require("../controllers/rating");
 
 const router = express.Router()
+
+router.get("/seed", seedRating)
 
 router.get("/", getRatings)
 
