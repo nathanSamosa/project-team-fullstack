@@ -42,8 +42,14 @@ const createPokemons = async(req, res) => {
     res.json({ data: pokemons})
 }
 
+const getPokemons = async(req, res) => {
+
+    const pokemons = await prisma.pokemon.findMany({})
+    res.json({ data: pokemons})
+}
 
 
 module.exports = {
-    createPokemons
+    createPokemons,
+    getPokemons
 }

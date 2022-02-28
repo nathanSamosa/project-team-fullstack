@@ -1,0 +1,130 @@
+#pokedexMain {
+    height: fit-content;
+}
+
+#pokedex {
+    max-width: 70rem;
+    height: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#pokedexDisplay {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.pokedexCell {
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    width: 12rem;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    grid-template-columns: 1fr;
+    box-shadow: 0px 0px 10px rgb(var(--clr-shadow));
+
+}
+
+.pokedexCell > div {
+    transition-duration: 0.75s;
+}
+
+.pokedexCell h2 {
+    text-transform: capitalize;
+}
+
+.pokedexCell p {
+    color: rgb(var(--clr-shadow));
+}
+
+.pokedexCell img {
+    max-width: 9rem;
+    max-height: 9rem;
+}
+
+.pokedexTypes {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pokedexTypes h3 {
+    font-weight: normal;
+    font-size: 1rem;
+    width: 5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: 5px;
+}
+
+.pokedexImgContainer {
+    height: 9rem;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+}
+
+.pokedexRating {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.pokedexRating > div{
+    position: relative;
+    height: 2rem;
+    width: 3rem;
+}
+
+.pokedexRating > div > * {
+    font-weight: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pokedexRating img,
+.pokedexDetails img {
+    height: 2rem;
+}
+
+.pokedexDetails {
+    background-color: rgba(0,0,0, 0.75);
+    content: "";
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    transition: transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateX(-100%);
+}
+
+.pokedexCell:hover .pokedexDetails {
+    transform: translateX(0);
+    
+}
+
+.pokedexCell:hover > div {
+    opacity: 0.2;
+    filter: blur(2px);
+}
+
+.pokedexDetails {
+    padding: 1rem;
+    color: white;
+    text-align: left;
+}
+
+.detailsStars {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}

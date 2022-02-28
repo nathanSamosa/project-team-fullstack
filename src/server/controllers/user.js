@@ -15,7 +15,10 @@ const postRegisterDetails = async (req, res) => {
             data: {
                 email: email,
                 username: username,
-                password: hashedPassword
+                password: hashedPassword,
+                profile: {
+                    create: {}
+                }
             }
         });
 

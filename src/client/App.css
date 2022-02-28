@@ -9,6 +9,23 @@
     --clr-pokeorange: 233, 171, 125;
     --clr-pokegreen: 150, 203, 174;
     --clr-shadow: 192, 192, 192;
-    }
 
+    --clr-type-grass: 155, 204, 80;
+    --clr-type-poison: 185, 127, 201;
+    --clr-type-fire: 252, 124, 35;
+    --clr-type-water: 69, 146, 196;
+    --clr-type-bug: 14, 159, 63;
+    --clr-type-normal: 164, 172, 175;
+    --clr-type-electric: 238, 213, 53;
+    --clr-type-fairy: 253, 185, 233;
+    --clr-type-fighting: 212, 102, 34;
+    --clr-type-psychic: 243, 102, 185;
+    --clr-type-rock: 163, 140, 33;
+    --clr-type-steel: 158, 183, 184;
+    --clr-type-ice: 80, 195, 230;
+    --clr-type-ghost: 123, 98, 183;
 
+    --clr-type-flying: 238, 237, 239;
+    --clr-type-ground: 214, 198, 126;
+    --clr-type-dragon: 241, 110, 87;
+}

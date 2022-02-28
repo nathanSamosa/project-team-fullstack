@@ -1,11 +1,12 @@
 const express = require("express");
 const {
-    createPokemons
+    createPokemons,
+    getPokemons
 } = require("../controllers/pokemon");
 
 const router = express.Router()
 
 router.get("/partyapi", createPokemons)
-
+router.get("/", getPokemons)
 
 module.exports = router;
