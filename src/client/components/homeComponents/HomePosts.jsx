@@ -12,6 +12,15 @@ const HomePosts = () => {
       setSearch(e.target.value);
   }
 
+  const searchPosts = (searchTerm, postArr) => {
+    if (!searchTerm) {
+      return postArr;
+    }
+    return postArr.filter(post => post.content.toLowerCase().includes(searchTerm) || post.title.toLowerCase().includes(searchTerm) || post.profile.user.username.toLowerCase().includes(searchTerm))
+  }
+
+  const filteredPosts = searchPosts(search, postArr);
+
   const changeDate = oldDate => {
       const tIndex = oldDate.indexOf("T");
       const dayMonthYear = oldDate.slice(0, tIndex);
@@ -48,9 +57,7 @@ const HomePosts = () => {
         <button>New Post</button>
       </div>
       {postArr && 
-        postArr.filter(post => 
-          {return post.content.toLowerCase().includes(search)}
-        ).map((post, index) => {
+        filteredPosts.map((post, index) => {
             return (
                 <div className="post" key={index}>
                     <h3>{post.title}</h3>
