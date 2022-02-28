@@ -25,8 +25,10 @@
     --clr-type-steel: 158, 183, 184;
     --clr-type-ice: 80, 195, 230;
     --clr-type-ghost: 123, 98, 183;
-
     --clr-type-flying: 238, 237, 239;
     --clr-type-ground: 214, 198, 126;
     --clr-type-dragon: 241, 110, 87;
+
+    --clr-star-filled: 255, 193, 7;
+    --clr-star-hollow: 228, 229, 223;
 }
