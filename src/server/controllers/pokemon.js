@@ -52,8 +52,16 @@ const createPokemons = async (req, res) => {
 
 const getPokemons = async(req, res) => {
 
-    const pokemons = await prisma.pokemon.findMany({})
-    res.json({ data: pokemons})
+    const pokemons = await prisma.pokemon.findMany({
+        include: {
+            rating: {
+                where: {
+                    profileId: 1
+                }
+            }
+        }
+    })
+    res.json({ data: pokemons })
 }
 
 

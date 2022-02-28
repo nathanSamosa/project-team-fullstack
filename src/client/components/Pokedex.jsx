@@ -30,6 +30,10 @@ const Pokedex = () => {
         return pad.substring(0, pad.length - str.length) + str;
     }
     
+    const averageRating = pokemon => {
+        const ratingsTotal = pokemon.strength + pokemon.companion + pokemon.design
+        return Math.round(ratingsTotal/3)
+    }
 
     return (
         <main id="pokedexMain">
@@ -57,36 +61,62 @@ const Pokedex = () => {
                                     </div>
                                     {/* TEMPORARY HARDCODED RATINGS */}
                                     <div className="pokedexRating">
-                                        <img src={ratingStar}></img>
-                                        <img src={ratingStar}></img>
-                                        <img src={ratingStar}></img>
-                                        <img src={ratingStar}></img>
-                                        <img src={ratingStar}></img>
+                                            {[...Array(averageRating(pokemon.rating[0]))].map(star => {
+                                                return (
+                                                    <img src={ratingStar}></img>
+                                                )
+                                            })}
+                                            {[...Array(5 - averageRating(pokemon.rating[0]))].map(star => {
+                                                return (
+                                                    <img src={ratingStarHollow}></img>
+                                                )
+                                            })}
                                     </div>
                                     <aside className="pokedexDetails">
                                         <h4>Combat</h4>
                                         <div className="detailsStars">
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStarHollow}></img>
-                                            <img src={ratingStarHollow}></img>
-                                            <img src={ratingStarHollow}></img>
+
+                                            {[...Array(pokemon.rating[0].strength)].map(star => {
+                                                return (
+                                                    <img src={ratingStar}></img>
+                                                )
+                                            })}
+                                            {[...Array(5 - pokemon.rating[0].strength)].map(star => {
+                                                return (
+                                                    <img src={ratingStarHollow}></img>
+                                                )
+                                            })}
+
                                         </div>
                                         <h4>Companionship</h4>
                                         <div className="detailsStars">
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
+                                            
+                                            {[...Array(pokemon.rating[0].companion)].map(star => {
+                                                return (
+                                                    <img src={ratingStar}></img>
+                                                )
+                                            })}
+                                            {[...Array(5 - pokemon.rating[0].companion)].map(star => {
+                                                return (
+                                                    <img src={ratingStarHollow}></img>
+                                                )
+                                            })}
+
                                         </div>
                                         <h4>Design</h4>
                                         <div className="detailsStars">
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStar}></img>
-                                            <img src={ratingStarHollow}></img>
-                                            <img src={ratingStarHollow}></img>
+                                            
+                                            {[...Array(pokemon.rating[0].design)].map(star => {
+                                                return (
+                                                    <img src={ratingStar}></img>
+                                                )
+                                            })}
+                                            {[...Array(5 - pokemon.rating[0].design)].map(star => {
+                                                return (
+                                                    <img src={ratingStarHollow}></img>
+                                                )
+                                            })}
+
                                         </div>
                                     </aside>
                                 </div>
