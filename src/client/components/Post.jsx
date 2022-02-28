@@ -22,34 +22,22 @@ const Post = () => {
             </div>
             <div className="comments">
                 <div className="comment">
-                    <div className="commentUsername">
-                        <p>Markus</p>
-                    </div>
-                    <div className="commentDateTime">
-                        <p>28/02/2022 1:22pm</p>
-                    </div>
-                    <div className="commentContent">
-                        <p>
-                            Lol ok buddy
-                        </p>
-                    </div>
+                    <p className="commentUsername">Markus</p>
+                    <p className="commentDateTime">28/02/2022 1:22pm</p>
+                    <p className="commentContent">
+                        Lol ok buddy
+                    </p>
                     <div className="commentInteract">
                         <p>Reply</p>
                         <p>Delete (Conditional)</p>
                     </div>
                 </div>
                 <div className="comment">
-                    <div className="commentUsername">
-                        <p>Juno</p>
-                    </div>
-                    <div className="commentDateTime">
-                        <p>28/02/2022 1:21pm</p>
-                    </div>
-                    <div className="commentContent">
-                        <p>
-                            That's pretty cool
-                        </p>
-                    </div>
+                    <p className="commentUsername">Juno</p>
+                    <p className="commentDateTime">28/02/2022 1:21pm</p>
+                    <p className="commentContent">
+                        That's pretty cool
+                    </p>
                     <div className="commentInteract">
                         <p>Reply</p>
                         <p>Delete (Conditional)</p>
