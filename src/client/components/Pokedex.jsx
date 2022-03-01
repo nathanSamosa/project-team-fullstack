@@ -11,7 +11,7 @@ const pokemonEndpoint = "/pokemon";
 const pokemonURL = URL + pokemonEndpoint;
 
 const Pokedex = () => {
-    const [pokeArr, setPokeArr] = useState([])
+    const [pokeArr, setPokeArr] = useState([]);
     
     const getPokemons = async() => {
         console.log(pokemonURL)
@@ -79,13 +79,25 @@ const Pokedex = () => {
 
 
                                         <h4>Combat</h4>
-                                        <PokedexRating pokemon={pokemon} stat={"strength"}/>
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"strength"}
+                                            getPokemons={() => getPokemons()}
+                                        />
 
                                         <h4>Companionship</h4>
-                                        <PokedexRating pokemon={pokemon} stat={"companion"}/>
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"companion"}
+                                            getPokemons={() => getPokemons()}
+                                        />
 
                                         <h4>Design</h4>
-                                        <PokedexRating pokemon={pokemon} stat={"design"}/>
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"design"}
+                                            getPokemons={() => getPokemons()}
+                                        />
                                     </aside>
                                 </div>
                                 

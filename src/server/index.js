@@ -27,6 +27,9 @@ app.use("/rating", ratingRouter)
 const profileRouter = require("./routers/profile")
 app.use("/profile", profileRouter)
 
+const postRouter = require("./routers/post")
+app.use("/post", postRouter);
+
 // Set up a default "catch all" route to use when someone visits a route
 // that we haven't built
 app.get('*', (req, res) => {

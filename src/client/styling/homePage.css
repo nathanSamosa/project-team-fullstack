@@ -1,0 +1,91 @@
+
+.homeHeader {
+    height: 70px;
+    width: 100%;
+    background-color: rgb(var(--clr-pokegreen));
+    position: sticky;
+    z-index: 100;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+  }
+
+  .headerNav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+  }
+
+  .headerNav ul li{
+    display: inline-block;
+    margin-right: 50px;
+  }
+  
+  .mainContainer {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .postContainer {
+      background-color: rgb(var(--clr-pokeorange));
+      height: 1500px;
+  }
+
+  .postHeader {
+      height: 50px;
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+      margin: 10px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .searchPost {
+      width: 92%;
+      height: 50%;
+  }
+
+  .searchPost:focus {
+      outline: none;
+  }
+
+  .postHeader button {
+      width: 65px;
+      height: 50%;
+  }
+
+  .post {
+      margin: 10px;
+      border: dotted 1px black;
+      padding: 10px;
+  }
+
+  .postInfoContainer {
+      display: grid;
+      grid-template-columns: 1fr 150px;
+      margin-top: 15px;
+  }
+
+  .postDate p {
+      font-size: 0.7rem;
+  }
+
+  .ratingContainer {
+      background-color: rgb(var(--clr-pokeblue));
+      height: max-content;
+  }
+
+  .ratingContainer img {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .ratingContainer h2 {
+      text-align: center;
+      padding: 5px;
+  }
