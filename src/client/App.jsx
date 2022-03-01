@@ -8,9 +8,10 @@ import Pokedex from './components/Pokedex';
 export default function App() {
   return (
     <div className="App">
-      {/* <Login />
-      <Registration /> */}
-      <Home />
+      {/* <Login /> */}
+      {/* <Registration /> */}
+      {/* <Home /> */}
+      <Pokedex />
     </div>
   );
 }
