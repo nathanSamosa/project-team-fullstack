@@ -3,11 +3,11 @@ import "../styling/post.css"
 
 import PostComment from "./PostComment"
 
+const postId = 1
+
 const URL = process.env.REACT_APP_API_URL;
-const postEndpoint = "/post/1"
-const commentEndpoint = "/comment/1"
+const postEndpoint = `/post/${postId}`
 const postURL = URL + postEndpoint
-const commentURL = URL + commentEndpoint
 
 const userDummyData = {
     id: 1,
@@ -69,6 +69,7 @@ const Post = () => {
     }
 
     const init = () => {
+        construction = {};
         console.log(postData)
         postData.comment.forEach(comment => {
             if (comment.parentId) determineChildComment(comment, construction)
@@ -82,11 +83,7 @@ const Post = () => {
         !postData ? getPost() : init()
     }, [postData])
 
-    const handleCommentReply = (comment) => {
-        const commentData = {...comment}
-        commentData.form = true
-        console.log(commentData)
-    }
+
 
     console.log("commentArr", commentArr)
 
@@ -111,7 +108,12 @@ const Post = () => {
                 Object.keys(commentArr).map(comment => {
 
                     return (
-                        <PostComment comment={commentArr[comment]} userData={userData} />
+                        <PostComment
+                            comment={commentArr[comment]}
+                            userData={userData}
+                            commentArr={commentArr}
+                            postId={postId}
+                        />
                     )
                 })
             }

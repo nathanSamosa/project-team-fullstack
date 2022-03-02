@@ -1,6 +1,35 @@
-export default function PostComment({comment, currentIteration = 0, userData}) {
+export default function PostComment({comment, currentIteration = 0, userData, commentArr, postId}) {
 
-    console.log("RECURSIVE", comment)
+    const URL = process.env.REACT_APP_API_URL;
+    const commentEndpoint = `/post/comment`
+    const commentURL = URL + commentEndpoint
+
+    const postComment = async(newComment) => {
+        console.log("postComment")
+        const fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newComment)
+        }
+
+        const res = await fetch(commentURL, fetchOptions)
+        const data = await res.json()
+        console.log(data)
+    }
+
+    const handleCommentReply = (comment) => {
+
+        const newComment = {
+            profileId: userData.id,
+            postId: postId,
+            parentId: comment.id,
+            content: "Test!"
+        }
+        postComment(newComment)
+    }
+
 
     return currentIteration == 5 ? null : (
 
@@ -19,13 +48,15 @@ export default function PostComment({comment, currentIteration = 0, userData}) {
             {comment.children &&
                 Object.keys(comment.children).map(reply => {
 
-                    console.log(reply)
+                    console.log(comment.children[reply])
                     return (
                             
                         <PostComment
                             comment={comment.children[reply]}
                             currentIteration={++currentIteration}
                             userData={userData}
+                            commentArr={commentArr}
+                            postId={postId}
                         />
 
                     )
