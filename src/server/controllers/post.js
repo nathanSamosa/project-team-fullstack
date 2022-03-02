@@ -1,5 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-const { createPortal } = require('react-dom');
 const { post } = require('../routers/post');
 const prisma = new PrismaClient();
 
@@ -54,6 +53,7 @@ const postComment = async (req, res) => {
             profileId: profileId,
             parentId: parentId,
             content: content
+
         }
         
     })
@@ -66,7 +66,6 @@ module.exports = {
     getPostById,
     postComment
 }
-
 
 
 
