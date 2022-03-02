@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import PokedexRating from "./PokedexRating";
 
 import "../styling/pokedex.css"
+
 import ratingStar from "../assets/star.png"
 import ratingStarHollow from "../assets/Star_Outline_2.png"
 
 const URL = process.env.REACT_APP_API_URL;
 const pokemonEndpoint = "/pokemon";
 const pokemonURL = URL + pokemonEndpoint;
-
 
 const Pokedex = () => {
     const [pokeArr, setPokeArr] = useState([]);
@@ -59,8 +60,9 @@ const Pokedex = () => {
                                             </h3>
                                         }
                                     </div>
-                                    {/* TEMPORARY HARDCODED RATINGS */}
+
                                     <div className="pokedexRating">
+
                                             {[...Array(averageRating(pokemon.rating[0]))].map(star => {
                                                 return (
                                                     <img src={ratingStar}></img>
@@ -72,52 +74,30 @@ const Pokedex = () => {
                                                 )
                                             })}
                                     </div>
+
                                     <aside className="pokedexDetails">
+
+
                                         <h4>Combat</h4>
-                                        <div className="detailsStars">
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"strength"}
+                                            getPokemons={() => getPokemons()}
+                                        />
 
-                                            {[...Array(pokemon.rating[0].strength)].map(star => {
-                                                return (
-                                                    <img src={ratingStar}></img>
-                                                )
-                                            })}
-                                            {[...Array(5 - pokemon.rating[0].strength)].map(star => {
-                                                return (
-                                                    <img src={ratingStarHollow}></img>
-                                                )
-                                            })}
-
-                                        </div>
                                         <h4>Companionship</h4>
-                                        <div className="detailsStars">
-                                            
-                                            {[...Array(pokemon.rating[0].companion)].map(star => {
-                                                return (
-                                                    <img src={ratingStar}></img>
-                                                )
-                                            })}
-                                            {[...Array(5 - pokemon.rating[0].companion)].map(star => {
-                                                return (
-                                                    <img src={ratingStarHollow}></img>
-                                                )
-                                            })}
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"companion"}
+                                            getPokemons={() => getPokemons()}
+                                        />
 
-                                        </div>
                                         <h4>Design</h4>
-                                        <div className="detailsStars">
-                                            
-                                            {[...Array(pokemon.rating[0].design)].map(star => {
-                                                return (
-                                                    <img src={ratingStar}></img>
-                                                )
-                                            })}
-                                            {[...Array(5 - pokemon.rating[0].design)].map(star => {
-                                                return (
-                                                    <img src={ratingStarHollow}></img>
-                                                )
-                                            })}
-
-                                        </div>
+                                        <PokedexRating
+                                            pokemon={pokemon}
+                                            stat={"design"}
+                                            getPokemons={() => getPokemons()}
+                                        />
                                     </aside>
                                 </div>
                                 

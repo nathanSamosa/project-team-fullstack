@@ -11,7 +11,8 @@ export default function App() {
     <div className="App">
       {/* <Login />
       <Registration /> 
-      <Home />*/}
+      <Home />
+      <Pokedex />*/}
       <Post />
     </div>
   );
