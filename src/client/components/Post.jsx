@@ -99,21 +99,24 @@ const Post = () => {
                             <button className="postDelete">Delete</button>
                         )}
                     </div>
+
+                    
                 </div>
             }
 
             {commentArr &&
-                Object.keys(commentTree).map(comment => {
-
-                    return (
-                        <PostComment
-                            comment={commentTree[comment]}
-                            userData={userData}
-                            commentTree={commentTree}
-                            postId={postId}
-                        />
-                    )
-                })
+                <div className="comments">
+                    {Object.keys(commentTree).map(comment => {
+                        return (
+                            <PostComment
+                                comment={commentTree[comment]}
+                                userData={userData}
+                                commentTree={commentTree}
+                                postId={postId}
+                            />
+                        )
+                    })}
+                </div>
             }
         </main>
     )
