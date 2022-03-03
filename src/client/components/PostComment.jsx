@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function PostComment({comment, currentIteration = 0, userData, commentArr, postId}) {
 
     const URL = process.env.REACT_APP_API_URL;
