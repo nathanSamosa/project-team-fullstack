@@ -82,9 +82,39 @@ const postComment = async (req, res) => {
     res.json({ data: comment })
 }
 
+const getPostsByProfileId = async (req, res) => {
+    const getProfileId = parseInt(req.params.id)
+    const posts = await prisma.post.findMany({
+        where: {
+            profileId: getProfileId
+        },
+        include: {
+            profile: {
+                include: {
+                    user: true,
+                },
+            }
+        }
+    })
+    res.json({ data: posts })
+}
+
+const deletePost = async (req, res) => {
+    const postId = parseInt(req.params.id)
+    const post = await prisma.post.delete({
+        where: {
+            id: postId
+        }
+    })
+
+    res.json({ data: "Deleted Post" })
+}
+
 module.exports = {
     getPosts,
     getPostById,
     sendPost,
-    postComment
+    postComment,
+    getPostsByProfileId,
+    deletePost
 }
