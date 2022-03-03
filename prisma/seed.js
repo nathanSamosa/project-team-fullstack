@@ -84,11 +84,54 @@ const createComment = async(user, post) => {
                 connect: {
                     id: comments[i].postId
                 }
+            },
+            children: {
+                create: [
+                    {
+                        content: 'This is a child comment',
+                        post: {
+                            connect: {
+                                id: comments[i].postId
+                            }
+                        },
+                        profile: {
+                            connect: {
+                                id: comments[i].profileId
+                            }
+                        },
+                        children: {
+                            create: [
+                                {
+                                    content: 'This is a child of a child comment',
+                                    post: {
+                                        connect: {
+                                            id: comments[i].postId
+                                        }
+                                    },
+                                    profile: {
+                                        connect: {
+                                            id: comments[i].profileId
+                                        }
+                                    }
+                                },
+                            ]
+                        }
+                    },
+                    {
+                        content: 'This is another child comment',
+                        post: {
+                            connect: {
+                                id: comments[i].postId
+                            }
+                        },
+                        profile: {
+                            connect: {
+                                id: comments[i].profileId
+                            }
+                        }
+                    },
+                ]
             }
-        }
-
-        if(postedComments[i-1]) {
-            commentData = {...commentData, parentId: postedComments[i-1].id}
         }
 
         const newComment = await prisma.comment.create({ data: commentData })

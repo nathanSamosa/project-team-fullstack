@@ -8,13 +8,18 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Registration from './components/Registration';
 import Pokedex from './components/Pokedex';
+
 import Header from './components/Header';
 import LoadingPokeball from './components/Loading';
+
+import Post from './components/Post'
+
 
 export default function App() {
   const [loading, setLoading] = useState(false); /* toggle between false and true to view what you need. Will impliment loading spinner as stretch */
 
   return (
+
     <>
       <Header />
       <main>
@@ -31,5 +36,6 @@ export default function App() {
       ) : <LoadingPokeball/>}
       </main>
     </>
+
   );
 }

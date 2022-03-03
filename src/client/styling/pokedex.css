@@ -26,8 +26,8 @@
     text-align: center;
     padding: 0.5rem;
     grid-template-columns: 1fr;
-    box-shadow: 0px 0px 10px rgb(var(--clr-shadow));
-
+    box-shadow: -2px -2px 5px rgba(var(--clr-pokeblue), 0.5), 
+                2px 2px 5px rgba(var(--clr-pokeorange), 0.5)
 }
 
 .pokedexCell > div {
@@ -127,4 +127,25 @@
 .detailsStars {
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
+}
+
+.ratingButton {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+.star[data="filled"] {
+    color: rgb(var(--clr-star-filled))
+}
+
+.star[data="hollow"] {
+    color: rgba(var(--clr-star-hollow), 0.5)
+}
+
+.star[data="hovered"] {
+    color: rgba(var(--clr-star-filled), 0.5)
 }

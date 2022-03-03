@@ -33,6 +33,7 @@ const postRegisterDetails = async (req, res) => {
 }
 
 const postLoginDetails = async (req, res) => {
+    console.log(req.body)
     try {
         const { username, password } = req.body;
         const findUser = await prisma.user.findUnique({
@@ -40,8 +41,11 @@ const postLoginDetails = async (req, res) => {
                 username
             }
         });
-        console.log()
-        const matchingPassword = await bcrypt.compare(password, findUser.password);
+
+        console.log(findUser)
+
+        const matchingPassword = findUser ? await bcrypt.compare(password, findUser.password) : null;
+
 
         if (findUser && matchingPassword) {
             const token = jwt.sign(username, secret);
