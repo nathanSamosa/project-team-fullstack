@@ -49,7 +49,7 @@ const createPokemons = async (req, res) => {
     }
     res.json("No Access")
 }
-
+/* This name needs changing and 1 is a magic number */
 const getPokemons = async(req, res) => {
 
     const pokemons = await prisma.pokemon.findMany({
@@ -64,8 +64,18 @@ const getPokemons = async(req, res) => {
     res.json({ data: pokemons })
 }
 
+const getPokemonRatings = async (req, res) => {
+    const pokeRatings = await prisma.pokemon.findMany({
+        include: {
+            rating: true
+        }
+    })
+    res.json({pokemonRatingData: pokeRatings})
+}
+
 
 module.exports = {
     createPokemons,
-    getPokemons
+    getPokemons,
+    getPokemonRatings
 }

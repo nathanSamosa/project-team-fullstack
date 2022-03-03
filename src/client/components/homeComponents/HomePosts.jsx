@@ -37,7 +37,6 @@ const HomePosts = (props) => {
       .then((res) => res.json())
       .then((data) => {
         setPostArr(data.data);
-        console.log(data.data);
       });
       setLoading(false);
     
