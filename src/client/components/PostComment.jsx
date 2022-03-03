@@ -1,4 +1,4 @@
-export default function PostComment({comment, currentIteration = 0, userData, commentArr, postId}) {
+export default function PostComment({comment, currentIteration = 0, userData, commentTree, postId}) {
 
     const URL = process.env.REACT_APP_API_URL;
     const commentEndpoint = `/post/comment`
@@ -55,7 +55,7 @@ export default function PostComment({comment, currentIteration = 0, userData, co
                             comment={comment.children[reply]}
                             currentIteration={++currentIteration}
                             userData={userData}
-                            commentArr={commentArr}
+                            commentTree={commentTree}
                             postId={postId}
                         />
 
