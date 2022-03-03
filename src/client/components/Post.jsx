@@ -20,7 +20,7 @@ const userDummyData = {
 const Post = () => {
 
     const [postData, setPostData] = useState(null)
-    const [commentArr, setCommentArr] = useState()
+    const [commentTree, setCommentTree] = useState()
     const [userData, setUserData] = useState(userDummyData)
 
     const getPost = async () => {
@@ -28,8 +28,6 @@ const Post = () => {
         const data = await res.json();
         await setPostData(data.data)
     }
-
-    let construction = {}
 
     const appendChild = (child, parent) => {
         return {
@@ -65,18 +63,18 @@ const Post = () => {
 
     //If the comment we are constructing has no parentId, attach it to the first layer of the construction.
     const createBaseComment = comment => {
-        construction = {...construction, [comment.id]: comment}
+        setCommentTree = {...setCommentTree, [comment.id]: comment}
     }
 
     const init = () => {
-        construction = {};
+        let commentTree = {};
         console.log(postData)
         postData.comment.forEach(comment => {
-            if (comment.parentId) determineChildComment(comment, construction)
+            if (comment.parentId) determineChildComment(comment, commentTree)
             else createBaseComment(comment)
         })
         
-        setCommentArr(construction)
+        setCommentTree(commentTree)
     }
 
     useEffect(() => {
@@ -85,7 +83,7 @@ const Post = () => {
 
 
 
-    console.log("commentArr", commentArr)
+    console.log("commentTree", commentTree)
 
     return (
         <main className="postPage">
@@ -105,13 +103,13 @@ const Post = () => {
             }
 
             {commentArr &&
-                Object.keys(commentArr).map(comment => {
+                Object.keys(commentTree).map(comment => {
 
                     return (
                         <PostComment
-                            comment={commentArr[comment]}
+                            comment={commentTree[comment]}
                             userData={userData}
-                            commentArr={commentArr}
+                            commentTree={commentTree}
                             postId={postId}
                         />
                     )
