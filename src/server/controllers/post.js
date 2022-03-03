@@ -64,7 +64,30 @@ const getPostById = async (req, res) => {
     res.json({ data: post })
 }
 
+const sendPost = async (req, res) => {
+    const {
+        category,
+        title,
+        content,
+        profileId
+    } = req.body
+
+    const createdPost = await prisma.post.create({
+        data: {
+            category: category,
+            title: title,
+            content: content,
+            profileId: profileId
+        }
+    })
+
+    console.log(createdPost)
+
+    res.json({ data: createdPost })
+}
+
 module.exports = {
     getPosts,
-    getPostById
+    getPostById,
+    sendPost
 }

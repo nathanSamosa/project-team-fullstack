@@ -1,0 +1,52 @@
+.createPostForm {
+    display: grid;
+    grid-template-rows: 40px max-content max-content;
+    gap: 10px;
+    width: 60vw;
+    margin: 0px auto 0px auto;
+}
+
+#postContent,
+#postTitle {
+    padding-left: 10px;
+}
+
+#postContent,
+#postTitle,
+.radioOption {
+    border: none;
+    border-left: 2px solid rgba(var(--clr-pokeblue), 1);
+    background-color: rgba(var(--clr-pokegreen), 0.1);
+}
+
+#postContent {
+    height: 200px;
+}
+
+#postSubmit {
+    width: 100px;
+    margin-top: 20px;
+}
+
+.categoryRadios {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content;
+    gap: 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.radioOption {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 10px 2px 10px
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    color: #2e2e2e;
+}

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Registration from './components/Registration';
 import Pokedex from './components/Pokedex';
 import Post from './components/Post'
+import CreatePost from './components/CreatePost'
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       {/* <Login />
       <Registration /> 
       <Home />*/}
-      <Post />
+      <CreatePost />
     </div>
   );
 }
