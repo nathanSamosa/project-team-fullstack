@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import PokedexRating from "./PokedexRating";
 
-import "../styling/pokedex.css"
 
-import ratingStar from "../assets/star.png"
-import ratingStarHollow from "../assets/Star_Outline_2.png"
+import "../styling/pokedex.css";
+import ratingStar from "../assets/star.png";
+import ratingStarHollow from "../assets/Star_Outline_2.png";
 
 const URL = process.env.REACT_APP_API_URL;
 const pokemonEndpoint = "/pokemon";
@@ -22,7 +22,7 @@ const Pokedex = () => {
     }
 
     useEffect(() => {
-        getPokemons()
+        getPokemons();
     }, [])
 
     const pokePad = index => {

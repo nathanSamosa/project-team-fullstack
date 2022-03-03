@@ -1,5 +1,8 @@
 const { PrismaClient } = require('@prisma/client');
+<<<<<<< HEAD
 const { createPortal } = require('react-dom');
+=======
+>>>>>>> d66285a60e7c6741bfab0cea5da7b24fc035db32
 const { post } = require('../routers/post');
 const prisma = new PrismaClient();
 
@@ -11,6 +14,7 @@ const getPosts = async (req, res) => {
                     user: true,
                 },
             }
+<<<<<<< HEAD
         }
     })
     res.json({ data: posts });
@@ -54,6 +58,8 @@ const postComment = async (req, res) => {
             profileId: profileId,
             parentId: parentId,
             content: content
+=======
+>>>>>>> d66285a60e7c6741bfab0cea5da7b24fc035db32
         }
         
     })
@@ -61,8 +67,58 @@ const postComment = async (req, res) => {
     res.json({ data: comment })
 }
 
+const getPostById = async (req, res) => {
+    const postId = parseInt(req.params.id)
+    const post = await prisma.post.findFirst({
+        where: {
+            id: postId
+        },
+        include: {
+            profile: {
+                include: {
+                    user: true,
+                },
+            },
+            comment: {
+                where: {
+                    commentId: {
+                        equals: null
+                    }
+                },
+                include: {
+                    profile: {
+                        include: {
+                            user: true,
+                        },
+                    },
+                    children: {
+                        include: {
+                            profile: {
+                                include: {
+                                    user: true
+                                },
+                            },
+                            children: {
+                                include: {
+                                    profile: {
+                                        include: {
+                                            user: true
+                                        },
+                                    },
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+    res.json({ data: post })
+}
+
 module.exports = {
     getPosts,
+<<<<<<< HEAD
     getPostById,
     postComment
 }
@@ -70,3 +126,7 @@ module.exports = {
 
 
 
+=======
+    getPostById
+}
+>>>>>>> d66285a60e7c6741bfab0cea5da7b24fc035db32

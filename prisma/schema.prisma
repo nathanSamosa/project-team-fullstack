@@ -88,7 +88,13 @@ model Comment {
   postId    Int
   profile   Profile   @relation(fields: [profileId], references: [id])
   profileId Int
+<<<<<<< HEAD
   parentId  Int?
+=======
+  children  Comment[] @relation("childComments")
+  comment   Comment?  @relation("childComments", fields: [commentId], references: [id])
+  commentId Int?
+>>>>>>> d66285a60e7c6741bfab0cea5da7b24fc035db32
   content   String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt

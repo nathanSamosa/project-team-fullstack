@@ -83,8 +83,6 @@ const Post = () => {
         !postData ? getPost() : init()
     }, [postData])
 
-
-
     console.log("commentArr", commentArr)
 
     return (
@@ -105,7 +103,6 @@ const Post = () => {
                     
                 </div>
             }
-
 
             {commentArr &&
                 <div className="comments">

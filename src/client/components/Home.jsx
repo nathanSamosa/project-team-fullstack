@@ -1,13 +1,12 @@
-import { useState } from "react";
 import "../styling/homePage.css";
 import HomeMain from "./homeComponents/HomeMain";
-import Header from "./homeComponents/Header";
 
-const Home = () => {
+const Home = (props) => {
+  const {setLoading} = props;
+
   return (
     <div className="homePage">
-      <Header />
-      <HomeMain />
+      <HomeMain setLoading={setLoading}/>
     </div>
   );
 };

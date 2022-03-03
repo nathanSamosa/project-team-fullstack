@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styling/form.css"
 
 const URL = process.env.REACT_APP_API_URL;
@@ -15,18 +16,19 @@ const emptyDetails = {
 const Login = () => {
     const [loginDetails, setLoginDetails] = useState(emptyDetails);
 
-    const postLogin = (url, loginDetails) => {
-        fetch(url, {
+    let navigate = useNavigate();
+
+    const postLogin = async (url, loginDetails) => {
+        const res = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(loginDetails)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+        const data = await res.json();
+        console.log("token:", data)
+        return data;
     }
 
     const handleChange = e => {
@@ -36,9 +38,13 @@ const Login = () => {
         });
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        postLogin(loginURL, loginDetails);
+        const token = await postLogin(loginURL, loginDetails);
+        if (token) {
+            navigate("/home");
+        }
+
         
     }
 
@@ -63,7 +69,7 @@ const Login = () => {
                         Password
                     </label>
                     <input 
-                        type="text" 
+                        type="password" 
                         name="password" 
                         id="password" 
                         className="regInput"
@@ -77,7 +83,7 @@ const Login = () => {
                     >Login</button>
                     <label className="registerLabel">
                         Don't have an account?
-                        <a className="registerLink" id="registerLink"> Register Here</a>
+                        <Link to="/registration" className="registerLink" id="registerLink"> Register Here</Link>
                     </label>
                     
                 </form>
