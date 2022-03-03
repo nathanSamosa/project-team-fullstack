@@ -8,7 +8,6 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Registration from './components/Registration';
 import Pokedex from './components/Pokedex';
-import Post from './components/Post'
 
 import Header from './components/Header';
 import LoadingPokeball from './components/Loading';
@@ -20,34 +19,24 @@ export default function App() {
   const [loading, setLoading] = useState(false); /* toggle between false and true to view what you need. Will impliment loading spinner as stretch */
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-      {/* <Login />
-      <Registration /> 
-      <Home />
-      <Pokedex />*/}
-      <Post />
-    </div>
-=======
 
-    <>
-      <Header />
-      <main>
-      {!loading ? (
+    <main className="App">
+        <Header />
+        <div>
+            {!loading ? (
 
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home setLoading={setLoading}/>} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/ratings" element={<Pokedex />} />
-        <Route path="/profile" element={<Pokedex />} /> /* This needs to have the proper component */
-      </Routes>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/home" element={<Home setLoading={setLoading}/>} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/ratings" element={<Pokedex />} />
+                <Route path="/profile" element={<Pokedex />} /> /* This needs to have the proper component */
+            </Routes>
 
-      ) : <LoadingPokeball/>}
-      </main>
-    </>
+            ) : <LoadingPokeball/>}
+        </div>
+    </main>
 
->>>>>>> d66285a60e7c6741bfab0cea5da7b24fc035db32
   );
 }
 

@@ -20,7 +20,7 @@ const userDummyData = {
 const Post = () => {
 
     const [postData, setPostData] = useState(null)
-    const [commentArr, setCommentArr] = useState()
+    const [commentTree, setCommentTree] = useState()
     const [userData, setUserData] = useState(userDummyData)
 
     const getPost = async () => {
@@ -28,8 +28,6 @@ const Post = () => {
         const data = await res.json();
         await setPostData(data.data)
     }
-
-    let construction = {}
 
     const appendChild = (child, parent) => {
         return {
@@ -65,25 +63,27 @@ const Post = () => {
 
     //If the comment we are constructing has no parentId, attach it to the first layer of the construction.
     const createBaseComment = comment => {
-        construction = {...construction, [comment.id]: comment}
+        setCommentTree = {...setCommentTree, [comment.id]: comment}
     }
 
     const init = () => {
-        construction = {};
+        let commentTree = {};
         console.log(postData)
         postData.comment.forEach(comment => {
-            if (comment.parentId) determineChildComment(comment, construction)
+            if (comment.parentId) determineChildComment(comment, commentTree)
             else createBaseComment(comment)
         })
         
-        setCommentArr(construction)
+        setCommentTree(commentTree)
     }
 
     useEffect(() => {
         !postData ? getPost() : init()
     }, [postData])
 
-    console.log("commentArr", commentArr)
+
+
+    console.log("commentTree", commentTree)
 
     return (
         <main className="postPage">
@@ -106,17 +106,14 @@ const Post = () => {
 
             {commentArr &&
                 <div className="comments">
-                    {Object.keys(commentArr).map(comment => {
-                        
+                    {Object.keys(commentTree).map(comment => {
                         return (
-                            <div className="comment">
-                                <PostComment
-                                    comment={commentArr[comment]}
-                                    userData={userData}
-                                    commentArr={commentArr}
-                                    postId={postId}
-                                />
-                            </div>
+                            <PostComment
+                                comment={commentTree[comment]}
+                                userData={userData}
+                                commentTree={commentTree}
+                                postId={postId}
+                            />
                         )
                     })}
                 </div>
