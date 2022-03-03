@@ -10,7 +10,6 @@ const postRegisterDetails = async (req, res) => {
     try {
         const { email, username, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        
         const newUser = await prisma.user.create({
             data: {
                 email: email,
@@ -22,11 +21,12 @@ const postRegisterDetails = async (req, res) => {
             }
         });
 
-        console.log(newUser)
+        console.log(newUser);
         res.json({ data: newUser });
         
     } catch(error) {
-        res.status(500).send("There was an error!");
+        console.log(error.message);
+        res.status(500).send({ error: "There was an error!" });
     }
 
 
@@ -41,9 +41,11 @@ const postLoginDetails = async (req, res) => {
                 username
             }
         });
+
         console.log(findUser)
 
         const matchingPassword = findUser ? await bcrypt.compare(password, findUser.password) : null;
+
 
         if (findUser && matchingPassword) {
             const token = jwt.sign(username, secret);
@@ -51,7 +53,7 @@ const postLoginDetails = async (req, res) => {
             return res.json({ data: token })
         }
 
-        return res.json("Username or Password is incorrect.");
+        return res.json( {error: "Username or Password is incorrect."});
         
     } catch (error) {
         res.status(500).send("There was an error with your details.");
