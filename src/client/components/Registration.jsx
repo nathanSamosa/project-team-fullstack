@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const URL = process.env.REACT_APP_API_URL;
 const registerEndpoint = "/user/register";
@@ -13,19 +14,19 @@ const emptyUser = {
 
 const Registration = () => {
     const [userDetails, setUserDetails] = useState(emptyUser);
+    const navigate = useNavigate();
 
-    const postRegister = (url, userDetails) => {
-        fetch(url, {
+    const postRegister = async (url, userDetails) => {
+        const res = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(userDetails)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+        const data = await res.json();
+        console.log({ FetchData: data });
+        return data;
     }
 
     const handleChange = e => {
@@ -34,11 +35,13 @@ const Registration = () => {
             ...userDetails, [name]: value
         });
     }
-    console.log(userDetails);
     
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        postRegister(registerURL, userDetails);
+        const resData = await postRegister(registerURL, userDetails);
+        if (resData) {
+            navigate("/home");
+        }
         
     }
 
@@ -58,7 +61,7 @@ const Registration = () => {
                         Email
                     </label>
                     <input 
-                        type="text" 
+                        type="email" 
                         name="email" 
                         id="email" 
                         className="regInput" 

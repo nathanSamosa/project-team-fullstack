@@ -58,8 +58,24 @@ const seedRating = async (req, res) => {
     res.json({ data: "ratings seeded" })
 }
 
+const updateRating = async (req, res) => {
+    const {
+        id, stat, ratingValue
+    } = req.body
+
+    
+
+    const rating = await prisma.rating.update({
+        where: { id: id },
+        data: { [stat]: ratingValue }
+    })
+    console.log(rating)
+    res.json({ data: rating })
+}
+
 module.exports = {
     getRatings,
+    updateRating,
     postRating,
     seedRating
 }

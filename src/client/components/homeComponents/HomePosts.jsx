@@ -4,7 +4,9 @@ const URL = process.env.REACT_APP_API_URL;
 const postEndpoint = "/post";
 const postURL = URL + postEndpoint;
 
-const HomePosts = () => {
+const HomePosts = (props) => {
+  const { setLoading } = props;
+
   const [postArr, setPostArr] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -37,7 +39,8 @@ const HomePosts = () => {
         setPostArr(data.data);
         console.log(data.data);
       });
-    // console.log(postArr);
+      setLoading(false);
+    
   };
 
   useEffect(() => {

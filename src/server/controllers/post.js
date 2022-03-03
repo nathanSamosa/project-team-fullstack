@@ -28,33 +28,10 @@ const getPostById = async (req, res) => {
                 },
             },
             comment: {
-                where: {
-                    commentId: {
-                        equals: null
-                    }
-                },
                 include: {
                     profile: {
                         include: {
-                            user: true,
-                        },
-                    },
-                    children: {
-                        include: {
-                            profile: {
-                                include: {
-                                    user: true
-                                },
-                            },
-                            children: {
-                                include: {
-                                    profile: {
-                                        include: {
-                                            user: true
-                                        },
-                                    },
-                                }
-                            }
+                            user: true
                         }
                     }
                 }
@@ -86,8 +63,29 @@ const sendPost = async (req, res) => {
     res.json({ data: createdPost })
 }
 
+const postComment = async (req, res) => {
+    
+    const {
+        postId, profileId, parentId, content
+    } = req.body
+
+    const comment = await prisma.comment.create({
+        data: {
+            postId: postId,
+            profileId: profileId,
+            parentId: parentId,
+            content: content
+
+        }
+        
+    })
+
+    res.json({ data: comment })
+}
+
 module.exports = {
     getPosts,
     getPostById,
-    sendPost
+    sendPost,
+    postComment
 }
