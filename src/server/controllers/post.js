@@ -75,7 +75,6 @@ const postComment = async (req, res) => {
             profileId: profileId,
             parentId: parentId,
             content: content
-
         }
         
     })
