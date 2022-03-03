@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
 const URL = process.env.REACT_APP_API_URL;
 const postEndpoint = "/post";
 const postURL = URL + postEndpoint;
@@ -46,6 +48,10 @@ const HomePosts = (props) => {
     getPosts();
   }, []);
 
+  const handleClick = () => {
+    console.log("Theunis");
+  }
+
   return (
     <div className="postContainer">
       <div className="postHeader">
@@ -56,7 +62,7 @@ const HomePosts = (props) => {
           placeholder="Search Posts" 
           value={search} 
           onChange={e => handleSearch(e)}/>
-        <button>New Post</button>
+        <Link to="/createPost"><button>New Post</button></Link>
       </div>
       {postArr && 
         filteredPosts.map((post, index) => {

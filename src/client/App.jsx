@@ -12,8 +12,8 @@ import Pokedex from './components/Pokedex';
 import Header from './components/Header';
 import LoadingPokeball from './components/Loading';
 
-import Post from './components/Post'
-import CreatePost from './components/CreatePost'
+import Post from './components/Post';
+import CreatePost from './components/CreatePost';
 
 
 export default function App() {
@@ -31,6 +31,7 @@ export default function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/ratings" element={<Pokedex />} />
         <Route path="/profile" element={<Pokedex />} /> /* This needs to have the proper component */
+        <Route path="/createPost" element={<CreatePost />} />
       </Routes>
 
       ) : <LoadingPokeball/>}
