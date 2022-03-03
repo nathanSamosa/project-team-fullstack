@@ -9,13 +9,17 @@ const password = process.env.JWT_SECRET
 
 
 const getRatings = async (req, res) => {
-    const {
-        getPassword
-    } = req.body
-    if (getPassword === password) {
-        const ratings = await prisma.rating.findMany({})
+    // const {  !!!!!     removed this to avoid get request error.
+    //     getPassword
+    // } = req.body
+    // if (getPassword === password) {
+        const ratings = await prisma.rating.findMany({
+            include: {
+                pokemon: true
+            }
+        })
         res.json({ data: ratings })
-    }
+    // }
 }
 
 const postRating = async (req, res) => {
