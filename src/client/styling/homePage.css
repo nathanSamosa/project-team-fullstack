@@ -1,6 +1,6 @@
 
 .homeHeader {
-    height: 70px;
+    height: 50px;
     width: 100%;
     background-color: rgb(var(--clr-pokegreen));
     position: sticky;
@@ -33,8 +33,10 @@
   }
 
   .postContainer {
-      background-color: rgb(var(--clr-pokeorange));
       height: 1500px;
+      border: 1px solid rgba(128, 128, 128, 0.336);
+      border-radius: 3px;
+      box-shadow: 1px 1px 10px rgba(var(--clr-pokeorange), 0.8);
   }
 
   .postHeader {
@@ -77,8 +79,11 @@
   }
 
   .ratingContainer {
-      background-color: rgb(var(--clr-pokeblue));
       height: max-content;
+      width: 200px;
+      border: 1px solid rgba(128, 128, 128, 0.336);
+      border-radius: 3px;
+      box-shadow: 1px 1px 10px rgba(var(--clr-pokeblue), 0.8);
   }
 
   .ratingContainer img {
@@ -89,4 +94,12 @@
   .ratingContainer h2 {
       text-align: center;
       padding: 5px;
+      font-size: 1.2rem;
+  }
+
+  .ratingContainer h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.6rem;
+      color: rgb(var(--clr-pokegreen));
   }

@@ -96,6 +96,7 @@ const HomeRatings = () => {
     return (
 
         <div className="ratingContainer">
+            <h3>Top Rated Pokemon</h3>
             <h2>Strength</h2>
 
             {sortedByStrength.length &&
